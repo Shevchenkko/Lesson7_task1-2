@@ -21,13 +21,14 @@ import (
 
 func main() {
 	var min, max int32
+	// input := "1 2 3 4 5"
 	input := "11 4 5 -67 99 76 2 45 9"
 
 	// розділяємо строку по пробілах
 	varInput := strings.Split(input, " ")
 
 	// шукаємо найбільше та найменше число
-	for _, val := range varInput {
+	for i, val := range varInput {
 		// переводимо строку у int
 		intVal, err := strconv.Atoi(val)
 		if err != nil {
@@ -36,6 +37,10 @@ func main() {
 
 		// переводимо int у int32
 		int32Val := int32(intVal)
+
+		if i == 0 {
+			max, min = int32Val, int32Val
+		}
 
 		if max < int32Val {
 			max = int32Val
